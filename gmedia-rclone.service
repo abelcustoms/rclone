@@ -1,0 +1,25 @@
+[Unit]
+Description=RClone Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+Environment=RCLONE_CONFIG=/home/xtreamcodes/rclone/rclone.conf
+
+ExecStart=/usr/bin/rclone mount gdrive: /GD \
+--allow-other \
+--dir-cache-time 96h \
+--drive-chunk-size 32M \
+--log-level INFO \
+--log-file /home/xtreamcodes/rclone/logs/rclone.log \
+--timeout 1h \
+--umask 002 \
+--rc
+ExecStop=/bin/fusermount -uz /GD3
+Restart=on-failure
+User=xtreamcodes
+Group=xtreamcodes
+
+[Install]
+WantedBy=multi-user.target
