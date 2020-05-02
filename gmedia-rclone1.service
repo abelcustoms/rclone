@@ -7,7 +7,7 @@ After=network-online.target
 Type=notify
 Environment=RCLONE_CONFIG=/opt/rclone1/rclone.conf
 
-ExecStart=/usr/bin/rclone mount gdrive: /GD1 \
+ExecStart=/usr/bin/rclone mount gdrive1: /GD1 \
 --allow-other \
 --dir-cache-time 96h \
 --drive-chunk-size 32M \
@@ -16,7 +16,7 @@ ExecStart=/usr/bin/rclone mount gdrive: /GD1 \
 --timeout 1h \
 --umask 002 \
 --rc
-ExecStop=/bin/fusermount -uz /GD
+ExecStop=/bin/fusermount -uz /GD1
 Restart=on-failure
 User=root
 Group=root
