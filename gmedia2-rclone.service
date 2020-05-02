@@ -1,0 +1,25 @@
+[Unit]
+Description=RClone Service 2
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+Environment=RCLONE_CONFIG=/opt/rclone2/rclone.conf
+
+ExecStart=/usr/bin/rclone mount gdrive2: /GD2 \
+--allow-other \
+--dir-cache-time 96h \
+--drive-chunk-size 32M \
+--log-level INFO \
+--log-file /opt/rclone2/logs/rclone.log \
+--timeout 1h \
+--umask 002 \
+--rc
+ExecStop=/bin/fusermount -uz /GD2
+Restart=on-failure
+User=xtreamcodes
+Group=xtreamcodes
+
+[Install]
+WantedBy=multi-user.target
