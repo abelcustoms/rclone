@@ -16,7 +16,7 @@ ExecStart=/usr/bin/rclone mount gdrive: /GD \
 --timeout 1h \
 --umask 002 \
 --rc
-ExecStop=/bin/fusermount -uz /GD3
+ExecStop=/bin/fusermount -uz /GD
 Restart=on-failure
 User=xtreamcodes
 Group=xtreamcodes
