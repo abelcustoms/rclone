@@ -1,5 +1,5 @@
 [Unit]
-Description=RClone Service
+Description=RClone Service 2
 Wants=network-online.target
 After=network-online.target
 
@@ -7,7 +7,7 @@ After=network-online.target
 Type=notify
 Environment=RCLONE_CONFIG=/opt/rclone2/rclone.conf
 
-ExecStart=/usr/bin/rclone mount gdrive: /GD2 \
+ExecStart=/usr/bin/rclone mount gdrive2: /GD2 \
 --allow-other \
 --dir-cache-time 96h \
 --drive-chunk-size 32M \
