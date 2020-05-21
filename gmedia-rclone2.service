@@ -10,11 +10,13 @@ Environment=RCLONE_CONFIG=/opt/rclone2/rclone.conf
 ExecStart=/usr/bin/rclone mount gdrive2: /GD2 \
 --allow-other \
 --dir-cache-time 96h \
---drive-chunk-size 32M \
+--drive-chunk-size 8M \
 --log-level INFO \
---log-file /opt/rclone2/logs/rclone.log \
+--log-file /opt/rclone1/logs/rclone.log \
 --timeout 1h \
+--poll-interval 5m
 --umask 002 \
+--vfs-read-chunk-size-limit 512M
 --rc
 ExecStop=/bin/fusermount -uz /GD2
 Restart=on-failure
