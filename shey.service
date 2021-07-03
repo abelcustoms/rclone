@@ -5,21 +5,21 @@ After=network-online.target
 
 [Service]
 Type=notify
-Environment=RCLONE_CONFIG=/root/.config/rclone/rclone.conf
+Environment=RCLONE_CONFIG=/home/sheybklyn/.config/rclone/rclone.conf
 
 ExecStart=/usr/bin/rclone mount gdrive: ~/gdrive/ \
 --allow-other \
 --dir-cache-time 96h \
 --drive-chunk-size 32M \
 --log-level INFO \
---log-file /root/.config/rclone/logs/rclone.log \
+--log-file /home/sheybklyn/.config/rclone/logs/rclone.log \
 --timeout 1h \
 --umask 002 \
 --rc
 ExecStop=/bin/fusermount -uz /gdrive
 Restart=on-failure
-User=sheybklyn
-Group=sheybklyn
+User=root
+Group=root
 
 [Install]
 WantedBy=multi-user.target
