@@ -5,14 +5,14 @@ After=network-online.target
 
 [Service]
 Type=notify
-Environment=RCLONE_CONFIG=/home/root/rclone/rclone.conf
+Environment=RCLONE_CONFIG=/root/.config/rclone/rclone.conf
 
 ExecStart=/usr/bin/rclone mount gdrive: ~/gdrive/ \
 --allow-other \
 --dir-cache-time 96h \
 --drive-chunk-size 32M \
 --log-level INFO \
---log-file /home/root/rclone/logs/rclone.log \
+--log-file /root/.config/rclone/logs/rclone.log \
 --timeout 1h \
 --umask 002 \
 --rc
