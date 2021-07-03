@@ -1,0 +1,25 @@
+[Unit]
+Description=RClone Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+Environment=RCLONE_CONFIG=/home/sheybklyn/rclone/rclone.conf
+
+ExecStart=/usr/bin/rclone mount gdrive: `/gdrive/ \
+--allow-other \
+--dir-cache-time 96h \
+--drive-chunk-size 32M \
+--log-level INFO \
+--log-file /home/sheybklyn/rclone/logs/rclone.log \
+--timeout 1h \
+--umask 002 \
+--rc
+ExecStop=/bin/fusermount -uz /gdrive
+Restart=on-failure
+User=sheybklyn
+Group=sheybklyn
+
+[Install]
+WantedBy=multi-user.target
