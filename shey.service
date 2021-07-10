@@ -9,6 +9,7 @@ Environment=RCLONE_CONFIG=/home/shey/.config/rclone/rclone.conf
 
 ExecStart=/usr/bin/rclone mount sheybklyn: /media/gdrive/ \
 --allow-other \
+--allow-non-empty \
 --dir-cache-time 96h \
 --drive-chunk-size 32M \
 --log-level INFO \
