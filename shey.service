@@ -7,7 +7,7 @@ After=network-online.target
 Type=notify
 Environment=RCLONE_CONFIG=/home/shey/.config/rclone/rclone.conf
 
-ExecStart=/usr/bin/rclone mount gdrive: ~/gdrive/ \
+ExecStart=/usr/bin/rclone mount sheybklyn: /media/gdrive/ \
 --allow-other \
 --dir-cache-time 96h \
 --drive-chunk-size 32M \
