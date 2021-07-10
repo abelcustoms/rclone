@@ -18,8 +18,8 @@ ExecStart=/usr/bin/rclone mount sheybklyn: /media/gdrive/ \
 --rc
 ExecStop=/bin/fusermount -uz /media/gdrive
 Restart=on-failure
-User=shey
-Group=www
+User=root
+Group=root
 
 [Install]
 WantedBy=multi-user.target
